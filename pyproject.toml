@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mingpu"
+version = "0.1.0"
+description = "MinGPU: plan the GPU count, parallel plan and model size that reach a target loss, with Calculon as the performance model"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Anonymous Authors" }]
+dependencies = [
+  "duckdb>=1.5,<2",
+  "typer>=0.12",
+  "rich>=13",
+  "pydantic>=2",
+  "pytz",
+  "numpy",
+  "psutil",
+  "pandas",
+  "calculon",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.8"]
+dev = ["pytest", "ruff"]
+
+[project.scripts]
+mingpu = "mingpu.cli.main:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mingpu"]
+
+[tool.uv.sources]
+calculon = { path = "vendor/calculon", editable = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["vendor", ".venv", "dist", "build"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.flake8-bugbear]
+extend-immutable-calls = ["typer.Option", "typer.Argument"]

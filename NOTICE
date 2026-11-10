@@ -1,0 +1,15 @@
+MinGPU
+Copyright 2026 Anonymous Authors
+
+This product uses Calculon (https://github.com/calculon-ai/calculon), pinned
+as the git submodule vendor/calculon at commit
+caa4b11f8fe1fee3ba57adaacb7590d7deabd053 and used unmodified. Calculon is
+licensed under the Apache License, Version 2.0, and carries this notice:
+
+  Calculon - Co-design for large scale parallel applications
+  Copyright 2022 Michael Isaev, Nic McDonald
+  All rights reserved.
+
+systems/h100_80g_nvl8_nooffload.json is derived from
+Calculon's systems/h100_80g_nvl8.json. It adds a bfloat16 entry under matrix
+and vector and sets the offload capacity mem2.GiB to 0; the rest is unchanged.

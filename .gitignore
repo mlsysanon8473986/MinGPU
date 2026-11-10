@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+plots/
+*.duckdb
+*.wal
+# the results of the two experiments are versioned: the database and its figures
+!experiments/mingpu.duckdb
+!experiments/plots/
+
+# editors, operating systems and local tools
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+desktop.ini
